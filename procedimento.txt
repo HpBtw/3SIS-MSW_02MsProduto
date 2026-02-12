@@ -1,0 +1,15 @@
+Após abrir o arquivo do SpringInitializr
+
+-> Project Structure
+1. Project:
+Setar SDK pra 17
+Setar Language Level pra 17
+
+2. Modules:
+Setar Sources para 17
+Setar Dependencies para SDK ms-17
+
+3. SDKs:
+Setar ms-17
+
+Apply e OK
