@@ -12,4 +12,13 @@ Setar Dependencies para SDK ms-17
 3. SDKs:
 Setar ms-17
 
-Apply e OK
+--- Apply e OK
+
+-> Settings:
+1. Build, Execution, Deployment:
+Compiler - Build Project
+
+2. Advanced Settings:
+Compiler - Allow auto-make to start even if developed application is currently running
+
+--- Apply e OK
