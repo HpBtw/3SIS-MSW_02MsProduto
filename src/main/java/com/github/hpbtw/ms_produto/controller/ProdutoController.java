@@ -40,7 +40,26 @@ public class ProdutoController {
 
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
-                .path("")
+                .path("/{ìd}")
+                .buildAndExpand(prodDto.getId())
+                .toUri();
+
+        return ResponseEntity.created(uri).body(prodDto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProdutoDto> updateProduto(@PathVariable Long id,
+                                                    @RequestBody ProdutoDto prodDto) {
+        prodDto = prodService.updateProduto(id, prodDto);
+
+        return ResponseEntity.ok(prodDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ProdutoDto> deleteProduto(@PathVariable Long id) {
+        prodService.deleteProdutoById(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 

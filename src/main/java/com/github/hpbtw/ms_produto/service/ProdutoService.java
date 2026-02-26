@@ -46,4 +46,23 @@ public class ProdutoService {
         prod.setDescricao(prodDto.getDescricao());
         prod.setValor(prodDto.getValor());
     }
+
+    @Transactional
+    public ProdutoDto updateProduto(Long id, ProdutoDto prodDto) {
+        try {
+            Produto prod = produtoRepo.getReferenceById(id);
+            copyDtoToProduto(prodDto, prod);
+            return new ProdutoDto(produtoRepo.save(prod));
+        } catch (EntityNotFoundException e) {
+            throw new EntityNotFoundException("Produto de ID '" + id + "' não encontrado!");
+        }
+    }
+
+    @Transactional
+    public void deleteProdutoById(Long id) {
+        if (!produtoRepo.existsById(id)) {
+            throw new EntityNotFoundException("Produto de ID '" + id + "' não encontrado!");
+        }
+        produtoRepo.deleteById(id);
+    }
 }
