@@ -3,6 +3,7 @@ package com.github.hpbtw.ms_produto.controller;
 import com.github.hpbtw.ms_produto.dto.ProdutoDto;
 import com.github.hpbtw.ms_produto.entities.Produto;
 import com.github.hpbtw.ms_produto.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,7 +36,7 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<ProdutoDto> createProduto(@RequestBody ProdutoDto prodDto) {
+    public ResponseEntity<ProdutoDto> createProduto(@RequestBody @Valid ProdutoDto prodDto) {
         prodDto = prodService.saveProduto(prodDto);
 
         URI uri = ServletUriComponentsBuilder
